@@ -1,35 +1,64 @@
-# Behave API Framework for API Automation Testing
+# Behave API Automation Framework
 
-Clone this project into your local using below command:
+This framework is designed for API testing using the Behave BDD (Behavior-Driven Development) framework. It allows for writing tests in a natural language style, making the test cases easy to read and understand.
+
+## Features
+
+- **BDD Approach**: Utilizes the Behave framework for Python to write tests in Gherkin syntax.
+- **Configurable**: Customizable settings through `behave.ini` for different testing environments.
+- **Reporting**: Supports generating reports in multiple formats, including Allure and JUnit, through Behave's formatter options.
+- **Integration**: Can be integrated with CI/CD pipelines for automated testing.
+
+## Getting Started
+
+### Prerequisites
+
+- Python 3.x
+- Behave
+- Allure (for Allure reports)
+
+### Installation
+
+1. Clone the repository to your local machine.
+2. Install the required Python packages:
+   ```
+   pip install -r requirements.txt
+   ```
+
+### Running Tests
+
+To run all tests, use the following command:
 
 ```
-git clone https://github.com/umangbhatia786/behave_api_automation_framework.git
+behave
 ```
 
-Install below Python packages if not already installed on local or PyCharm virtual environment using below commands:
+To run a specific feature file:
 
 ```
-pip install behave
-pip install requests
-pip install allure-behave
-pip install faker
-pip install jsonschema
+behave features/my_feature.feature
 ```
 
-Install allure on your Mac using below brew command:
+### Configuration
 
-```
-brew install allure
-```
-Then you can run the scripts by using below command inside the project directory:
+The framework's behavior can be customized by editing the `behave.ini` file. For example, to change the reports directory:
 
-```
-behave --tags=@regression
+```ini:behave_api_automation_framework/behave.ini
+9|ALLURE_REPORTS_DIR=new_reports_directory
 ```
 
-You can generate and view Allure Reports using the below commands:
+### Generating Reports
+
+To generate Allure reports, run:
 
 ```
-allure generate test_reports/allure.reports -o ./allure-report --clean
-allure open ./allure-report
+behave -f allure_behave.formatter:AllureFormatter -o test_reports/allure.reports
 ```
+
+## Contributing
+
+Contributions are welcome. Please read the contributing guidelines before submitting pull requests.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details
